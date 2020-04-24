@@ -1,10 +1,10 @@
 {
-    "name": "zulucrypto/stellar-api",
+    "name": "srgbsv/stellar-api",
     "description": "API client for the Stellar network",
     "autoload": {
         "psr-4": {
-            "ZuluCrypto\\StellarSdk\\": "src/",
-            "ZuluCrypto\\StellarSdk\\Test\\": "tests/"
+            "Kilonix\\StellarSdk\\": "src/",
+            "Kilonix\\StellarSdk\\Test\\": "tests/"
         }
     },
     "require": {
