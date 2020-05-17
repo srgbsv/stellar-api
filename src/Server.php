@@ -3,6 +3,7 @@
 namespace ZuluCrypto\StellarSdk;
 
 
+use ZuluCrypto\StellarSdk\QueryBuilders\TradeAggregationsBuilder;
 use phpseclib\Math\BigInteger;
 use Prophecy\Exception\InvalidArgumentException;
 use ZuluCrypto\StellarSdk\Horizon\ApiClient;
@@ -240,5 +241,13 @@ class Server
     public function setApiClient($apiClient)
     {
         $this->apiClient = $apiClient;
+    }
+
+    /**
+     * @return TradeAggregationsBuilder
+     */
+    public function getTradesAggregation()
+    {
+        return new TradeAggregationsBuilder($this);
     }
 }

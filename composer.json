@@ -3,8 +3,8 @@
     "description": "API client for the Stellar network",
     "autoload": {
         "psr-4": {
-            "Kilonix\\StellarSdk\\": "src/",
-            "Kilonix\\StellarSdk\\Test\\": "tests/"
+            "ZuluCrypto\\StellarSdk\\": "src/",
+            "ZuluCrypto\\StellarSdk\\Test\\": "tests/"
         }
     },
     "require": {
