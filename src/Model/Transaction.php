@@ -152,17 +152,20 @@ class Transaction extends RestApiModel
     /**
      * @param null $sinceCursor
      * @param int  $limit
+     * @param string $order
      * @return array|AssetTransferInterface[]|RestApiModel[]
      */
-    public function getPayments($sinceCursor = null, $limit = 50)
+    public function getPayments($sinceCursor = null, $limit = 50, $order = 'desc')
     {
         $payments = [];
 
         $url = sprintf('/transactions/%s/payments', $this->hash);
-        $params = [];
+        $params = [
+            'limit' => $limit,
+            'order' => $order
+        ];
 
         if ($sinceCursor) $params['cursor'] = $sinceCursor;
-        if ($limit) $params['limit'] = $limit;
 
         if ($params) {
             $url .= '?' . http_build_query($params);

@@ -161,17 +161,20 @@ class Account extends RestApiModel
     /**
      * @param null $sinceCursor
      * @param int  $limit
+     * @param string $order
      * @return Transaction[]
      */
-    public function getTransactions($sinceCursor = null, $limit = 50)
+    public function getTransactions($sinceCursor = null, $limit = 50, $order = 'desc')
     {
         $transactions = [];
 
         $url = sprintf('/accounts/%s/transactions', $this->accountId);
-        $params = [];
+        $params = [
+            'limit' => $limit,
+            'order' => $order
+        ];
 
         if ($sinceCursor) $params['cursor'] = $sinceCursor;
-        if ($limit) $params['limit'] = $limit;
 
         if ($params) {
             $url .= '?' . http_build_query($params);
@@ -225,17 +228,20 @@ class Account extends RestApiModel
     /**
      * @param null $sinceCursor
      * @param int  $limit
+     * @param string $order
      * @return array|AssetTransferInterface[]|RestApiModel[]
      */
-    public function getPayments($sinceCursor = null, $limit = 50)
+    public function getPayments($sinceCursor = null, $limit = 50, $order = 'desc')
     {
         $results = [];
 
         $url = sprintf('/accounts/%s/payments', $this->accountId);
-        $params = [];
+        $params = [
+            'limit' => $limit,
+            'order' => $order
+        ];
 
         if ($sinceCursor) $params['cursor'] = $sinceCursor;
-        if ($limit) $params['limit'] = $limit;
 
         if ($params) {
             $url .= '?' . http_build_query($params);
@@ -369,10 +375,10 @@ class Account extends RestApiModel
 
         return null;
     }
-    
+
     /**
      * Returns an array holding account thresholds.
-     * 
+     *
      * @return array
      */
     public function getThresholds()
